@@ -7,30 +7,35 @@
         mc:Ignorable="d"
         Title="SPAANS_Calculatrice" Height="450" Width="800">
 
-
+    <!-- Définition d'un fond noir -->
     <Grid Background="Black">
-        
+
+        <!-- Définition des colonnes -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
+        <!-- Définition des lignes -->
         <Grid.RowDefinitions>
             <RowDefinition Height="70"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
+        <!-- Définition des styles pour les boutons de chiffres -->
         <Grid.Resources>
             <Style TargetType="{x:Type Button}">
                 <Setter Property="Margin" Value="10"></Setter>
                 <Setter Property="Background" Value="DimGray"></Setter>
                 <Setter Property="FontSize" Value="38"></Setter>
                 <Setter Property="Foreground" Value="White"></Setter>
+                
 
                 <Style.Resources>
                     <Style TargetType="Border">
@@ -38,7 +43,8 @@
                     </Style>
                 </Style.Resources>
             </Style>
-            
+
+            <!-- Style pour les boutons d'opérations -->
             <Style x:Key="MyStyle" TargetType="{x:Type Control}">
                 <Setter Property="Margin" Value="10"></Setter>
                 <Setter Property="Background" Value="Orange"></Setter>
@@ -51,6 +57,7 @@
                 </Style.Resources>
             </Style>
 
+            <!-- Style pour le bouton = -->
             <Style x:Key="MyStyle2" TargetType="{x:Type Control}">
                 <Setter Property="Margin" Value="10"></Setter>
                 <Setter Property="Background" Value="WhiteSmoke"></Setter> 
@@ -62,6 +69,7 @@
                 </Style.Resources>
             </Style>
 
+            <!-- Style pour le bouton CLR -->
             <Style x:Key="MyStyle3" TargetType="{x:Type Control}">
                 <Setter Property="Margin" Value="10"></Setter>
                 <Setter Property="Background" Value="WhiteSmoke"></Setter>
@@ -72,8 +80,23 @@
                     </Style>
                 </Style.Resources>
             </Style>
+
+            <!-- Style pour les boutons Racine, COS, SIN, TAN -->
+            <Style x:Key="MyStyle4" TargetType="{x:Type Control}">
+                <Setter Property="Margin" Value="10"></Setter>
+                <Setter Property="Background" Value="Yellow"></Setter>
+                <Setter Property="FontSize" Value="38"></Setter>
+                <Setter Property="Foreground" Value="Black"></Setter>
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"></Setter>
+                    </Style>
+                </Style.Resources>
+            </Style>
+            
         </Grid.Resources>
-        
+
+        <!-- Définition des contrôles de la calculatrice -->
         <TextBox Grid.Row="0" Grid.ColumnSpan="4" Name="TB_Display"></TextBox>
         <Button Grid.Row="1" Grid.Column="0" Name="BTN_1" Content="1" Click="BTN_1_Click"></Button>
         <Button Grid.Row="1" Grid.Column="1" Name="BTN_2" Content="2" Click="BTN_2_Click"></Button>
@@ -94,6 +117,11 @@
         <Button Grid.Row="4" Grid.Column="1" Name="BTN_CLR" Style="{StaticResource MyStyle3}" Content="CLR" Click="BTN_CLR_Click"></Button>
         <Button Grid.Row="4" Grid.Column="2" Name="BTN_Egal" Style="{StaticResource MyStyle2}" Content="=" Click="BTN_Egal_Click"></Button>
         <Button Grid.Row="4" Grid.Column="3" Name="BTN_Diviser" Style="{StaticResource MyStyle}" Content="/" Click="BTN_Diviser_Click"></Button>
+
+        <Button Grid.Row="5" Grid.Column="0" Name="BTN_RACINE" Style="{StaticResource MyStyle4}"  Content="√" Click="BTN_Racine_Click"></Button>
+        <Button Grid.Row="5" Grid.Column="1" Name="BTN_COS" Style="{StaticResource MyStyle4}" Content="COS" Click="BTN_COS_Click"></Button>
+        <Button Grid.Row="5" Grid.Column="2" Name="BTN_SIN" Style="{StaticResource MyStyle4}" Content="SIN" Click="BTN_SIN_Click"></Button>
+        <Button Grid.Row="5" Grid.Column="3" Name="BTN_TAN" Style="{StaticResource MyStyle4}" Content="TAN" Click="BTN_TAN_Click"></Button>
 
 
     </Grid>

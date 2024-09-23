@@ -26,11 +26,13 @@ namespace Tom_Spaans_Calculatrice
             InitializeComponent(); // Initialisation des composants de l'interface utilisateur
         }
 
-        int first_nb; // Premier nombre à saisir pour le calcul
-        int second_nb; // Deuxième nombre à saisir pour le calcul
-        int result; // Résultat du calcul
+        double first_nb; // Premier nombre à saisir pour le calcul
+        double second_nb; // Deuxième nombre à saisir pour le calcul
+        double result; // Résultat du calcul
         char operation; // Opération à effectuer
 
+        double angle;
+        double angleEnRadians;
         // Fonctions pour les boutons chiffres
         private void BTN_1_Click(object sender, RoutedEventArgs e)
         {
@@ -85,28 +87,28 @@ namespace Tom_Spaans_Calculatrice
         // Fonctions pour les boutons d'opérations
         private void BTN_Plus_Click(object sender, RoutedEventArgs e)
         {
-            first_nb = int.Parse(TB_Display.Text); // Stock le premier nombre
+            first_nb = double.Parse(TB_Display.Text); // Stock le premier nombre
             TB_Display.Text = "0"; // Réinitialise l'affichage pour saisir l'opération
             operation = '+'; // Définit l'opération
         }
 
         private void BTN_Moins_Click(object sender, RoutedEventArgs e)
         {
-            first_nb = int.Parse(TB_Display.Text);
+            first_nb = double.Parse(TB_Display.Text);
             TB_Display.Text = "0";
             operation = '-';
         }
 
         private void BTN_Fois_Click(object sender, RoutedEventArgs e)
         {
-            first_nb = int.Parse(TB_Display.Text);
+            first_nb = double.Parse(TB_Display.Text);
             TB_Display.Text = "0";
             operation = '*';
         }
 
         private void BTN_Diviser_Click(object sender, RoutedEventArgs e)
         {
-            first_nb = int.Parse(TB_Display.Text);
+            first_nb = double.Parse(TB_Display.Text);
             TB_Display.Text = "0";
             operation = '/';
         }
@@ -126,21 +128,21 @@ namespace Tom_Spaans_Calculatrice
 
         private void BTN_COS_Click(object sender, RoutedEventArgs e)
         {
-            first_nb = int.Parse(TB_Display.Text);
+            first_nb = double.Parse(TB_Display.Text);
             TB_Display.Text = "0";
             operation = 'C';
         }
 
         private void BTN_SIN_Click(object sender, RoutedEventArgs e)
         {
-            first_nb = int.Parse(TB_Display.Text);
+            first_nb = double.Parse(TB_Display.Text);
             TB_Display.Text = "0";
             operation = 'S';
         }
 
         private void BTN_TAN_Click(object sender, RoutedEventArgs e)
         {
-            first_nb = int.Parse(TB_Display.Text);
+            first_nb = double.Parse(TB_Display.Text);
             TB_Display.Text = "0";
             operation = 'T';
         }
@@ -148,7 +150,7 @@ namespace Tom_Spaans_Calculatrice
         // Fonction pour le bouton "=" to do all the operations 
         private void BTN_Egal_Click(object sender, RoutedEventArgs e)
         {
-            second_nb = Int32.Parse(TB_Display.Text); // Stock le deuxième nombre
+            second_nb = double.Parse(TB_Display.Text); // Stock le deuxième nombre
             switch (operation)
             {
                 case '+':
@@ -177,24 +179,24 @@ namespace Tom_Spaans_Calculatrice
                     break;
 
                 case 'C':
-                    double angle = Convert.ToDouble(first_nb); // Convertit la variable en un nombre à virgule
-                    double angleEnRadians = angle * (Math.PI / 180); // L'angle en radians est convertit en degrés
+                    angle = Convert.ToDouble(first_nb); // Convertit la variable en un nombre à virgule
+                    angleEnRadians = angle * (Math.PI / 180); // L'angle en radians est convertit en degrés
                     double cosinus = Math.Cos(angleEnRadians); // Calcule le cosinus de l’angle en utilisant la fonction Math
                     TB_Display.Text = cosinus.ToString(); // Convertit la valeur en chaîne de caractères pour l’afficher
                     break;
 
                 case 'S':
-                    double angle2 = Convert.ToDouble(first_nb);
-                    double angleEnRadians2 = angle2 * (Math.PI / 180);
-                    double sinus = Math.Sin(angleEnRadians2);
+                    angle = Convert.ToDouble(first_nb);
+                    angleEnRadians = angle * (Math.PI / 180);
+                    double sinus = Math.Sin(angleEnRadians);
                     TB_Display.Text = sinus.ToString();
                     break;
 
                 case 'T':
-                    double angle3 = Convert.ToDouble(first_nb);
-                    double angleEnRadians3 = angle3 * (Math.PI / 180);
-                    double tangente = Math.Tan(angleEnRadians3);
-                    TB_Display.Text = tangente.ToString();
+                     angle = Convert.ToDouble(first_nb);
+                    //angleEnRadians = angle * (Math.PI / 180);
+                 //   double tangente = Math.Tan(angleEnRadians);
+                    TB_Display.Text = Math.Tan(angle * (Math.PI / 180)).ToString();
                     break;
             }
         }

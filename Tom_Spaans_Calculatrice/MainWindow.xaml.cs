@@ -121,7 +121,7 @@ namespace Tom_Spaans_Calculatrice
         // Fonctions pour les boutons Racine, COS, SIN et TAN
         private void BTN_Racine_Click(object sender, RoutedEventArgs e)
         {
-            first_nb = int.Parse(TB_Display.Text);
+            first_nb = double.Parse(TB_Display.Text);
             TB_Display.Text = "0";
             operation = '√';
         }
@@ -201,7 +201,7 @@ namespace Tom_Spaans_Calculatrice
             }
         }
 
-        // Fonction pour afficher les chiffres dans le TextBox
+        // Fonction pour afficher les chiffres dans le TextBox.
         public void display(string num)
         {
             if (TB_Display.Text == "0")
